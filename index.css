@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Styles migrated from index.html */
+
+/* China Theme Pattern - Elegant Cloud/Scale */
+.theme-china-bg {
+  background-color: #2a0a0a;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4af37' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Christmas Theme - Nostalgic Gradient */
+.theme-christmas-bg {
+  background: radial-gradient(circle at 50% 0%, #1e3c72 0%, #2a5298 40%, #0f172a 100%);
+  background-attachment: fixed;
+}
+
+/* Cyberpunk Effects */
+.theme-cyberpunk-bg {
+  background-color: #050505;
+  background-image: 
+    linear-gradient(rgba(0, 255, 159, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 159, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle scanline animation for Cyberpunk */
+.theme-cyberpunk-bg::after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  z-index: 2;
+  background-size: 100% 2px, 3px 100%;
+  pointer-events: none;
+}
+
+/* Vignette to focus center */
+.theme-cyberpunk-bg::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(circle, transparent 50%, #000000 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.theme-cyberpunk-text {
+  text-shadow: 0 0 5px rgba(0, 255, 159, 0.5);
+}
+.cyberpunk-cursor {
+  box-shadow: 0 0 10px #00ff9f, 0 0 20px #00ff9f;
+}
+
+/* Habbo Theme Styles */
+.theme-habbo-bg {
+  background-color: #1a1a2e;
+  background-image: linear-gradient(0deg, transparent 24%, rgba(255, 255, 255, .05) 25%, rgba(255, 255, 255, .05) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, .05) 75%, rgba(255, 255, 255, .05) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(255, 255, 255, .05) 25%, rgba(255, 255, 255, .05) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, .05) 75%, rgba(255, 255, 255, .05) 76%, transparent 77%, transparent);
+  background-size: 50px 50px;
+  font-family: 'Press Start 2P', cursive;
+}
+
+/* Particle Dust */
+.particle-dust {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background-color: #00ff9f;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: dropFade 0.6s ease-out forwards;
+  box-shadow: 0 0 4px #00ff9f;
+}
+@keyframes dropFade {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(20px); opacity: 0; }
+}
+
+/* Random Color Click Effect */
+button:active, .interactive:active {
+  animation: randomColor 0.2s linear;
+}
+@keyframes randomColor {
+  0% { filter: hue-rotate(0deg) brightness(1.2); }
+  100% { filter: hue-rotate(360deg) brightness(1.2); }
+}
+
+/* Snow Effect with Foggy feel */
+.snowflake {
+  position: fixed;
+  top: -10vh;
+  z-index: 0;
+  color: white;
+  user-select: none;
+  pointer-events: none;
+  animation: fall linear infinite;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+  filter: blur(0.5px);
+}
+@keyframes fall {
+  0% { transform: translateY(-10vh) translateX(0); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(110vh) translateX(20px); opacity: 0; }
+}
+
+/* Custom Scrollbar for Sidebar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+}
+.light-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.1);
+}
