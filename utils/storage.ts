@@ -13,18 +13,23 @@ export const saveProfile = (profile: UserProfile) => {
 export const loadProfile = (): UserProfile => {
   try {
     const data = localStorage.getItem(STORAGE_KEY);
-    // Backward compatibility with old key if needed, or migration logic could go here
     if (data) {
-      const parsed = JSON.parse(data);
-      return { 
-        ...INITIAL_PROFILE, 
-        ...parsed, 
-        settings: { ...INITIAL_PROFILE.settings, ...parsed.settings },
-        stats: { ...INITIAL_PROFILE.stats, ...parsed.stats }
-      };
+      try {
+        const parsed = JSON.parse(data);
+        // Merge with initial profile to ensure new fields are present (schema migration)
+        return { 
+          ...INITIAL_PROFILE, 
+          ...parsed, 
+          settings: { ...INITIAL_PROFILE.settings, ...parsed.settings },
+          stats: { ...INITIAL_PROFILE.stats, ...parsed.stats }
+        };
+      } catch (parseError) {
+        console.error("Failed to parse profile data", parseError);
+        return INITIAL_PROFILE;
+      }
     }
   } catch (e) {
-    console.error("Failed to load profile", e);
+    console.error("Failed to load profile from storage", e);
   }
   return INITIAL_PROFILE;
 };
